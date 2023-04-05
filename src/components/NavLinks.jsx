@@ -2,13 +2,18 @@ import { useGlobalContext } from '../contexts/Context';
 import sublinks from '../data';
 
 const NavLinks = () => {
-  const { openSubmenu, closeSubmenu } = useGlobalContext();
+  const { setPageId } = useGlobalContext();
   return (
     <ul className='nav-links'>
       {sublinks.map((subLink) => {
         const { pageId, page } = subLink;
         return (
-          <button key={pageId} className='nav-link'>
+          <button
+            key={pageId}
+            className='nav-link'
+            onMouseEnter={() => setPageId(pageId)}
+            onMouseLeave={() => setPageId(null)}
+          >
             {page}
           </button>
         );
